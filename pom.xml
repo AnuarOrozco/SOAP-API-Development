@@ -13,57 +13,30 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>SpringBootSoap</name>
     <description>Spring Boot Soap Client</description>
-    <url/>
-    <licenses>
-        <license/>
-    </licenses>
-    <developers>
-        <developer/>
-    </developers>
-    <scm>
-        <connection/>
-        <developerConnection/>
-        <tag/>
-        <url/>
-    </scm>
     <properties>
         <java.version>17</java.version>
     </properties>
-
     <dependencies>
-        <!-- Spring Web Services Starter -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web-services</artifactId>
         </dependency>
 
-        <!-- Spring Boot Devtools for easier development -->
+        <dependency>
+            <groupId>org.glassfish.jaxb</groupId>
+            <artifactId>jaxb-runtime</artifactId>
+        </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
             <scope>runtime</scope>
             <optional>true</optional>
         </dependency>
-
-        <!-- Spring Boot Test Starter -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
-        </dependency>
-
-        <!-- Glassfish JAXB Runtime (Jakarta JAXB) -->
-        <dependency>
-            <groupId>org.glassfish.jaxb</groupId>
-            <artifactId>jakarta.xml.bind</artifactId>
-            <version>4.0.0</version> <!-- Utiliza la versión más reciente de Jakarta JAXB -->
-        </dependency>
-
-        <!-- Jakarta JAXB API -->
-        <dependency>
-            <groupId>jakarta.xml.bind</groupId>
-            <artifactId>jakarta.xml.bind-api</artifactId>
-            <version>4.0.0</version> <!-- Versión compatible con Jakarta -->
         </dependency>
     </dependencies>
 
@@ -94,13 +67,19 @@
                             <url>http://www.dneonline.com/calculator.asmx?WSDL</url>
                         </schema>
                     </schemas>
-                    <!-- Agregar esta configuración para especificar el contexto de Jakarta -->
-                    <args>
-                        <arg>-Djavax.xml.bind.context.factory=jakarta.xml.bind.JAXBContextFactory</arg>
-                    </args>
                 </configuration>
-            </plugin>
 
+                <!--	Confioguracion para archivos WSDL fisicos-->
+                <!--				<configuration>-->
+                <!--					<schemaLanguage>WSDL</schemaLanguage>-->
+                <!--					<schemaDirectory>${project.basedir}/src/main/resources/wsdl</schemaDirectory>-->
+                <!--					<schemas>-->
+                <!--						<schemaFiles>CalculatorApi.wsdl</schemaFiles>-->
+                <!--						<packageName>com.soap.wsdl</packageName>-->
+                <!--						<outputDirectory>${project.basedir}/src/main/java</outputDirectory>-->
+                <!--					</schemas>-->
+                <!--				</configuration>-->
+            </plugin>
         </plugins>
     </build>
 
